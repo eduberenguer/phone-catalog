@@ -31,7 +31,7 @@ export function mapProduct(raw: Product): Product {
 export function mapProductDetail(raw: ProductDetail): ProductDetail {
   return {
     ...raw,
-    imageUrl: toHttps(raw.imageUrl),
+    imageUrl: toHttps(raw.colorOptions[0]?.imageUrl ?? ""),
     colorOptions: raw.colorOptions.map((color) => ({
       ...color,
       imageUrl: toHttps(color.imageUrl),
