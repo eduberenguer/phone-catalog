@@ -14,6 +14,9 @@ export function PhoneList() {
   return (
     <div className={styles.phoneList}>
       <SearchBar value={search} onChange={setSearch} />
+      <p className={styles.resultsCount} aria-live="polite">
+        {products.length} results
+      </p>
 
       {loading && <div className={styles.loading}>Loading...</div>}
 
