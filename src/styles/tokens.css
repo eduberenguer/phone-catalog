@@ -1,0 +1,12 @@
+:root {
+  --color-bg: #fff;
+  --color-text: #000;
+  --color-text-muted: #666;
+  --color-danger: #d32f2f;
+  --color-border: #ccc;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+}
