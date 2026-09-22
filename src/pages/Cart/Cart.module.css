@@ -1,0 +1,42 @@
+.empty {
+  padding: var(--space-6) 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.footer {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-lg, 1.25rem);
+  margin-bottom: var(--space-4);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.actions button {
+  flex: 1;
+  padding: var(--space-3);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.continueButton {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+}
+
+.payButton {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+}
