@@ -4,7 +4,7 @@
   gap: var(--space-1);
   color: var(--color-text);
   text-decoration: none;
-  font-size: var(--font-size-sm, 0.875rem);
+  font-size: var(--font-size-xs);
   text-transform: uppercase;
 }
 
