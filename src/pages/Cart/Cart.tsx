@@ -8,26 +8,28 @@ import styles from "./Cart.module.css";
 export function Cart() {
   const { items, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
-
-  if (items.length === 0) return <p className={styles.empty}>Empty cart</p>;
+  const isEmpty = items.length === 0;
 
   return (
-    <div>
-      <h1>Cart ({items.length})</h1>
-      {items.map((item) => {
-        return <CartItemRow key={item.lineId} item={item} />;
-      })}
-      <footer className={styles.footer}>
-        <div>
-          <p className={styles.total}>TOTAL {formatPrice(totalPrice)}</p>
-        </div>
-        <div className={styles.actions}>
-          <button
-            className={styles.continueButton}
-            onClick={() => navigate("/")}
-          >
-            CONTINUE SHOPPING
-          </button>
+    <div className={styles.page}>
+      <h1 className={styles.title}>Cart ({items.length})</h1>
+
+      {!isEmpty &&
+        items.map((item) => <CartItemRow key={item.lineId} item={item} />)}
+
+      <div className={styles.footer}>
+        {!isEmpty && (
+          <p className={styles.total}>
+            <span>TOTAL</span>
+            <span>{formatPrice(totalPrice)}</span>
+          </p>
+        )}
+
+        <button className={styles.continueButton} onClick={() => navigate("/")}>
+          CONTINUE SHOPPING
+        </button>
+
+        {!isEmpty && (
           <button
             className={styles.payButton}
             onClick={() => {
@@ -37,8 +39,8 @@ export function Cart() {
           >
             PAY
           </button>
-        </div>
-      </footer>
+        )}
+      </div>
     </div>
   );
 }
