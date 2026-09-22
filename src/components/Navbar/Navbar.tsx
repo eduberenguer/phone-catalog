@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/useCart";
+import { LogoMark } from "./LogoMark";
 
 import styles from "./Navbar.module.css";
 
@@ -10,43 +11,7 @@ export function Navbar() {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo} aria-label="MBST, go to home">
-        <svg
-          aria-hidden="true"
-          className={styles.logoMark}
-          viewBox="0 0 70 40"
-          fill="none"
-        >
-          <mask id="logoBite">
-            <rect x="0" y="0" width="70" height="40" fill="white" />
-            <circle cx="50" cy="20" r="24" fill="black" />
-          </mask>
-          <circle
-            cx="18"
-            cy="20"
-            r="18"
-            fill="currentColor"
-            mask="url(#logoBite)"
-          />
-          <g fill="currentColor">
-            <rect x="44" y="2" width="10" height="36" rx="1.5" />
-            <rect
-              x="44"
-              y="2"
-              width="10"
-              height="36"
-              rx="1.5"
-              transform="rotate(60 49 20)"
-            />
-            <rect
-              x="44"
-              y="2"
-              width="10"
-              height="36"
-              rx="1.5"
-              transform="rotate(120 49 20)"
-            />
-          </g>
-        </svg>
+        <LogoMark className={styles.logoMark} />
         <span>MBST</span>
       </Link>
       <Link
