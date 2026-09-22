@@ -4,14 +4,19 @@ import { formatPrice } from "../../utils/format";
 
 import styles from "./PhoneCard.module.css";
 
-export function PhoneCard({ product }: { product: Product }) {
+interface PhoneCardProps {
+  product: Product;
+  bordered?: boolean;
+}
+
+export function PhoneCard({ product, bordered = true }: PhoneCardProps) {
   return (
-    <div className={styles.card}>
+    <div className={bordered ? styles.card : styles.cardPlain}>
       <Link to={`/phone/${product.id}`}>
         <img src={product.imageUrl} alt={product.name} />
-        <p>{product.name}</p>
-        <div>
-          <span className={styles.brand}>{product.brand}</span>
+        <span className={styles.brand}>{product.brand}</span>
+        <div className={styles.info}>
+          <p className={styles.name}>{product.name}</p>
           <span className={styles.price}>{formatPrice(product.basePrice)}</span>
         </div>
       </Link>
