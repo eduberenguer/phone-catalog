@@ -1,10 +1,10 @@
-.phoneList {
-  max-width: var(--max-width-content, 1200px);
-  margin: 0 auto;
-  padding: var(--space-4);
+.resultsCount {
+  margin: var(--space-3) 0;
+  color: var(--color-text);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
 }
 
-.loading,
 .error {
   padding: var(--space-5) 0;
   text-align: center;
@@ -17,4 +17,25 @@
   border: 1px solid var(--color-text);
   background: transparent;
   cursor: pointer;
+}
+
+.results {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.results[data-loading] {
+  opacity: 0.4;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .skeletonGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
