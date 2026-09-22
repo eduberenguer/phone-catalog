@@ -1,0 +1,19 @@
+.carousel {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-3);
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 45%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: 27%;
+  }
+}
