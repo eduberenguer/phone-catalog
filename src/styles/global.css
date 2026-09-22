@@ -4,12 +4,25 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: var(--font-weight-light);
 }
 
 img {
   max-width: 100%;
   display: block;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  font-weight: var(--font-weight-light);
 }

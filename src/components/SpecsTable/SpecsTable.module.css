@@ -1,20 +1,25 @@
+.table {
+  margin-top: 96px;
+}
+
 .table h2 {
+  font-size: var(--font-size-lg);
   text-transform: uppercase;
-  margin-bottom: var(--space-4);
+  margin-bottom: 40px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: 48px;
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-xs);
 }
 
 .label {
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text);
   flex-shrink: 0;
 }
 

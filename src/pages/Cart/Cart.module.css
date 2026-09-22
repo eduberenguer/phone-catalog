@@ -1,42 +1,94 @@
-.empty {
-  padding: var(--space-6) 0;
-  text-align: center;
-  color: var(--color-text-muted);
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
 }
 
 .footer {
-  margin-top: var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
 }
 
 .total {
+  order: 1;
+  flex: 1 1 100%;
   display: flex;
   justify-content: space-between;
-  font-size: var(--font-size-lg, 1.25rem);
-  margin-bottom: var(--space-4);
-}
-
-.actions {
-  display: flex;
   gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
-.actions button {
+.continueButton,
+.payButton {
   flex: 1;
-  padding: var(--space-3);
+  padding: 20px var(--space-5);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-button);
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .continueButton {
-  background: var(--color-bg);
-  color: var(--color-text);
-  border: 1px solid var(--color-text);
+  order: 2;
 }
 
 .payButton {
-  background: var(--color-text);
+  order: 3;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .total {
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  .continueButton {
+    order: 1;
+    flex: 0 0 auto;
+    width: 260px;
+    margin-right: auto;
+  }
+
+  .payButton {
+    order: 3;
+    flex: 0 0 auto;
+    width: 260px;
+  }
+}
+
+.continueButton {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 0.5px solid var(--color-text);
+}
+
+.continueButton:hover {
+  color: var(--color-button-primary-hover);
+  border-color: var(--color-button-primary-hover);
+}
+
+.payButton {
+  background: var(--color-button-primary);
   color: var(--color-bg);
   border: none;
+}
+
+.payButton:hover {
+  background: var(--color-button-primary-hover);
 }

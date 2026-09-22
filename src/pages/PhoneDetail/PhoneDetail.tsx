@@ -20,6 +20,12 @@ export function PhoneDetail() {
   const { addItem } = useCart();
   const navigate = useNavigate();
 
+  const displayedImage =
+    product?.colorOptions.find((color) => color.name === selectedColor)
+      ?.imageUrl ??
+    product?.imageUrl ??
+    "";
+
   if (!id) {
     return <div>Product ID is missing</div>;
   }
@@ -47,10 +53,6 @@ export function PhoneDetail() {
     ? formatPrice(selectedStorageOption.price)
     : `From ${formatPrice(Math.min(...product.storageOptions.map((o) => o.price)))}`;
 
-  const displayedImage =
-    product.colorOptions.find((color) => color.name === selectedColor)
-      ?.imageUrl ?? product.imageUrl;
-
   const canAddToCart = Boolean(selectedStorage && selectedColor);
 
   function handleAddToCart() {
@@ -70,33 +72,41 @@ export function PhoneDetail() {
   }
 
   return (
-    <div className={styles.page}>
+    <div>
       <BackLink />
 
       <div className={styles.layout}>
         <img src={displayedImage} alt={product.name} className={styles.image} />
 
         <div className={styles.info}>
-          <h1>{product.name}</h1>
-          <p className={styles.price}>{displayedPrice}</p>
-
-          <div>
-            <h2>Storage. How much space do you need?</h2>
-            <StorageSelector
-              options={product.storageOptions}
-              selected={selectedStorage}
-              onChange={setSelectedStorage}
-            />
+          <div className={styles.titleBlock}>
+            <h1 className={styles.title}>{product.name}</h1>
+            <p className={styles.price}>{displayedPrice}</p>
           </div>
 
-          <div>
-            <h2>Color. Pick your favourite.</h2>
-            <ColorSelector
-              options={product.colorOptions}
-              selected={selectedColor}
-              onChange={setSelectedColor}
-            />
-            {selectedColor && <p>{selectedColor}</p>}
+          <div className={styles.selectors}>
+            <div>
+              <h2 className={styles.sectionHeading}>
+                Storage. How much space do you need?
+              </h2>
+              <StorageSelector
+                options={product.storageOptions}
+                selected={selectedStorage}
+                onChange={setSelectedStorage}
+              />
+            </div>
+
+            <div>
+              <h2 className={styles.sectionHeading}>
+                Color. Pick your favourite.
+              </h2>
+              <ColorSelector
+                options={product.colorOptions}
+                selected={selectedColor}
+                onChange={setSelectedColor}
+              />
+              <p className={styles.colorName}>{selectedColor ?? " "}</p>
+            </div>
           </div>
 
           <button

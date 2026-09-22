@@ -5,11 +5,11 @@ import styles from "./Layout.module.css";
 
 export function Layout() {
   return (
-    <>
+    <div className={styles.app}>
       <Navbar />
       <main className={styles.main}>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 }

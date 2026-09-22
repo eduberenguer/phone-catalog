@@ -9,21 +9,23 @@ export function CartItemRow({ item }: { item: CartItem }) {
 
   return (
     <div className={styles.row}>
-      <img src={item.imageUrl} alt={item.name} />
+      <img src={item.imageUrl} alt={item.name} className={styles.image} />
       <div className={styles.info}>
-        <p>{item.name}</p>
-        <p>
-          {item.storage} | {item.color.toUpperCase()}
-        </p>
-        <p>{formatPrice(item.price)}</p>
+        <div className={styles.details}>
+          <p className={styles.name}>{item.name}</p>
+          <p className={styles.variant}>
+            {item.storage} | {item.color.toUpperCase()}
+          </p>
+          <p className={styles.price}>{formatPrice(item.price)}</p>
+        </div>
+        <button
+          className={styles.remove}
+          aria-label={`Remove ${item.name}`}
+          onClick={() => removeItem(item.lineId)}
+        >
+          Remove
+        </button>
       </div>
-      <button
-        className={styles.remove}
-        aria-label={`Remove ${item.name}`}
-        onClick={() => removeItem(item.lineId)}
-      >
-        Remove
-      </button>
     </div>
   );
 }
