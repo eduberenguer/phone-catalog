@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useProductDetail } from "../../hooks/useProductDetail";
 import { NotFound } from "../NotFound/NotFound";
 import { BackLink } from "../../components/BackLink/BackLink";
@@ -18,6 +18,7 @@ export function PhoneDetail() {
   const { id } = useParams<{ id: string }>();
   const { product, isLoading, error, isNotFound } = useProductDetail(id ?? "");
   const { addItem } = useCart();
+  const navigate = useNavigate();
 
   if (!id) {
     return <div>Product ID is missing</div>;
@@ -64,6 +65,8 @@ export function PhoneDetail() {
       color: selectedColor,
       price: selectedStorageOption.price,
     });
+
+    navigate("/cart");
   }
 
   return (
