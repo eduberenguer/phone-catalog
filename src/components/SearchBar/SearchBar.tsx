@@ -11,6 +11,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
       <input
         className={styles.input}
         type="text"
+        name="search"
         aria-label="Search for a smartphone"
         value={value}
         onChange={(e) => onChange(e.target.value)}
