@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Product } from "../../types/product";
 import { PhoneCard } from "../PhoneCard/PhoneCard";
+
 import styles from "./SimilarProducts.module.css";
 
 interface SimilarProductsProps {

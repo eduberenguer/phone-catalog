@@ -23,7 +23,6 @@ export async function getProducts({
     `/products?${params.toString()}`,
     signal,
   );
-
   return dedupeById(raw).map(mapProduct);
 }
 

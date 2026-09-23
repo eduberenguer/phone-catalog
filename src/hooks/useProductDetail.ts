@@ -5,7 +5,7 @@ import { ApiError } from "../api/client";
 
 export function useProductDetail(productId: string) {
   const [product, setProduct] = useState<ProductDetail | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isNotFound, setIsNotFound] = useState(false);
 
