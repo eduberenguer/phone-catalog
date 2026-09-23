@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import type { CartItem } from "../../types/cart";
 import { formatPrice } from "../../utils/format";
@@ -9,7 +10,9 @@ export function CartItemRow({ item }: { item: CartItem }) {
 
   return (
     <div className={styles.row}>
-      <img src={item.imageUrl} alt={item.name} className={styles.image} />
+      <Link to={`/phone/${item.productId}`} className={styles.imageLink}>
+        <img src={item.imageUrl} alt={item.name} className={styles.image} />
+      </Link>
       <div className={styles.info}>
         <div className={styles.details}>
           <p className={styles.name}>{item.name}</p>

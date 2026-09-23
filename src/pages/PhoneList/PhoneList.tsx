@@ -1,13 +1,12 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { useProducts } from "../../hooks/useProducts";
-
-import styles from "./PhoneList.module.css";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { PhoneGrid } from "../../components/PhoneGrid/PhoneGrid";
-import { useLocation } from "react-router-dom";
 import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
-import { Skeleton } from "../../components/Skeleton/Skeleton";
+
+import styles from "./PhoneList.module.css";
 
 export function PhoneList() {
   const location = useLocation();
@@ -16,6 +15,7 @@ export function PhoneList() {
   const { products, loading, error, retry } = useProducts(debouncedSearch);
 
   const showSkeleton = loading && products.length === 0;
+  const isRefetching = loading && !showSkeleton;
 
   return (
     <div>
@@ -31,21 +31,18 @@ export function PhoneList() {
       {error && !loading && (
         <div className={styles.error}>
           <p>Error: {error.message}</p>
-          <button onClick={retry}>Retry</button>
+          <button className={styles.retryButton} onClick={retry}>
+            Retry
+          </button>
         </div>
       )}
 
-      {showSkeleton && (
-        <div className={styles.skeletonGrid}>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <Skeleton key={index} />
-          ))}
-        </div>
-      )}
-
-      {!showSkeleton && !error && (
-        <div className={styles.results} data-loading={loading || undefined}>
-          <PhoneGrid products={products} />
+      {!error && (
+        <div
+          className={styles.results}
+          data-loading={isRefetching || undefined}
+        >
+          <PhoneGrid products={products} isLoading={showSkeleton} />
         </div>
       )}
     </div>

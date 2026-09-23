@@ -2,17 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: var(--max-width-content, 1200px);
-  margin: 0 auto;
-  padding: var(--space-4);
+  gap: var(--space-4);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   color: var(--color-text);
   text-decoration: none;
   font-weight: 700;

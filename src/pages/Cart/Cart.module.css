@@ -25,7 +25,7 @@
   justify-content: space-between;
   gap: var(--space-3);
   font-size: var(--font-size-sm);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   text-transform: uppercase;
 }
 
@@ -41,10 +41,25 @@
 
 .continueButton {
   order: 2;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 0.5px solid var(--color-text);
+}
+
+.continueButton:hover {
+  color: var(--color-button-primary-hover);
+  border-color: var(--color-button-primary-hover);
 }
 
 .payButton {
   order: 3;
+  background: var(--color-button-primary);
+  color: var(--color-bg);
+  border: none;
+}
+
+.payButton:hover {
+  background: var(--color-button-primary-hover);
 }
 
 @media (min-width: 768px) {
@@ -58,37 +73,14 @@
     flex: 0 0 auto;
   }
 
+  .continueButton,
+  .payButton {
+    flex: 0 0 auto;
+    width: 260px;
+  }
+
   .continueButton {
     order: 1;
-    flex: 0 0 auto;
-    width: 260px;
     margin-right: auto;
   }
-
-  .payButton {
-    order: 3;
-    flex: 0 0 auto;
-    width: 260px;
-  }
-}
-
-.continueButton {
-  background: var(--color-bg);
-  color: var(--color-text);
-  border: 0.5px solid var(--color-text);
-}
-
-.continueButton:hover {
-  color: var(--color-button-primary-hover);
-  border-color: var(--color-button-primary-hover);
-}
-
-.payButton {
-  background: var(--color-button-primary);
-  color: var(--color-bg);
-  border: none;
-}
-
-.payButton:hover {
-  background: var(--color-button-primary-hover);
 }

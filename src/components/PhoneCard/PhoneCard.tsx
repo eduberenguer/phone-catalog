@@ -11,7 +11,7 @@ interface PhoneCardProps {
 
 export function PhoneCard({ product, bordered = true }: PhoneCardProps) {
   return (
-    <div className={bordered ? styles.card : styles.cardPlain}>
+    <div className={`${styles.card} ${bordered ? styles.bordered : ""}`}>
       <Link to={`/phone/${product.id}`}>
         <img src={product.imageUrl} alt={product.name} />
         <span className={styles.brand}>{product.brand}</span>
