@@ -2,24 +2,30 @@ import { useEffect, useState } from "react";
 import type { CartItem } from "../types/cart";
 import { CartContext } from "./cart-context";
 
-function readStoredCart(): CartItem[] {
-  const storedCart = localStorage.getItem("phone-catalog:cart");
-  if (storedCart) {
-    try {
-      return JSON.parse(storedCart) as CartItem[];
-    } catch {
-      return [];
-    }
-  }
+const STORAGE_KEY = "phone-catalog:cart";
 
-  return [];
+function readStoredCart(): CartItem[] {
+  try {
+    const storedCart = localStorage.getItem(STORAGE_KEY);
+    return storedCart ? (JSON.parse(storedCart) as CartItem[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeStoredCart(items: CartItem[]) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  } catch {
+    return;
+  }
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(readStoredCart);
 
   useEffect(() => {
-    localStorage.setItem("phone-catalog:cart", JSON.stringify(items));
+    writeStoredCart(items);
   }, [items]);
 
   const addItem = (item: Omit<CartItem, "lineId">) => {

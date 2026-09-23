@@ -6,6 +6,7 @@ import { usePageTitle } from "../../hooks/usePageTitle";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { PhoneGrid } from "../../components/PhoneGrid/PhoneGrid";
 import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 import styles from "./PhoneList.module.css";
 
@@ -14,10 +15,10 @@ export function PhoneList() {
   const location = useLocation();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);
-  const { products, loading, error, retry } = useProducts(debouncedSearch);
+  const { products, isLoading, error, retry } = useProducts(debouncedSearch);
 
-  const showSkeleton = loading && products.length === 0;
-  const isRefetching = loading && !showSkeleton;
+  const showSkeleton = isLoading && products.length === 0;
+  const isRefetching = isLoading && !showSkeleton;
 
   return (
     <div>
@@ -30,13 +31,8 @@ export function PhoneList() {
         {products.length} results
       </p>
 
-      {error && !loading && (
-        <div className={styles.error}>
-          <p>Error: {error.message}</p>
-          <button className={styles.retryButton} onClick={retry}>
-            Retry
-          </button>
-        </div>
+      {error && !isLoading && (
+        <ErrorMessage message={error.message} onRetry={retry} />
       )}
 
       {!error && (
