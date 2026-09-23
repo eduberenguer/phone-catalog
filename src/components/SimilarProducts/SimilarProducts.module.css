@@ -1,16 +1,15 @@
 .section {
-  margin-top: 96px;
+  margin-top: var(--space-section);
 }
 
 .heading {
   font-size: var(--font-size-lg);
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-section-heading);
 }
 
 .carousel {
   display: flex;
-  gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
@@ -22,14 +21,13 @@
 
 .item {
   flex: 0 0 auto;
-  width: 45%;
+  width: 85%;
   border: 0.5px solid var(--color-border);
-  border-left: none;
   scroll-snap-align: start;
 }
 
-.item:first-child {
-  border-left: 0.5px solid var(--color-border);
+.item + .item {
+  border-left: none;
 }
 
 @media (min-width: 768px) {
