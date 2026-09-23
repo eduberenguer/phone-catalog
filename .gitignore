@@ -30,6 +30,9 @@ coverage
 *.sw?
 !package-lock.json
 
-# Figma reference screenshots — internal use only, not ours to publish.
-# REMINDER: delete this folder and this line before finishing the project.
-design-reference/
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
