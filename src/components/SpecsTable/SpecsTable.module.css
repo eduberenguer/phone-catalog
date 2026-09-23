@@ -1,29 +1,33 @@
 .table {
-  margin-top: 96px;
+  margin-top: var(--space-section);
 }
 
-.table h2 {
+.heading {
   font-size: var(--font-size-lg);
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-section-heading);
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 160px 1fr;
   gap: 48px;
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
   font-size: var(--font-size-xs);
 }
 
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
 .label {
   text-transform: uppercase;
   color: var(--color-text);
-  flex-shrink: 0;
 }
 
 .value {
   margin: 0;
-  text-align: right;
 }
