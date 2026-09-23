@@ -1,16 +1,14 @@
-.card,
-.cardPlain {
+.card {
   position: relative;
   overflow: hidden;
 }
 
-.card {
+.bordered {
   border: 0.5px solid var(--color-border);
   margin: -1px 0 0 -1px;
 }
 
-.card::before,
-.cardPlain::before {
+.card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -22,14 +20,11 @@
 }
 
 .card:hover::before,
-.card:focus-within::before,
-.cardPlain:hover::before,
-.cardPlain:focus-within::before {
+.card:focus-within::before {
   transform: scaleY(1);
 }
 
-.card a,
-.cardPlain a {
+.card a {
   position: relative;
   z-index: 1;
   display: block;
@@ -40,14 +35,11 @@
 }
 
 .card:hover a,
-.card:focus-within a,
-.cardPlain:hover a,
-.cardPlain:focus-within a {
+.card:focus-within a {
   color: var(--color-bg);
 }
 
-.card img,
-.cardPlain img {
+.card img {
   width: 100%;
   aspect-ratio: 312 / 257;
   object-fit: contain;
@@ -61,14 +53,13 @@
   gap: var(--space-2);
 }
 
-.name {
-  margin: 0;
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-}
-
+.name,
 .price {
   font-size: var(--font-size-xs);
+}
+
+.name {
+  text-transform: uppercase;
 }
 
 .brand {
@@ -79,7 +70,6 @@
   text-transform: uppercase;
 }
 
-.card:hover .brand,
-.cardPlain:hover .brand {
+.card:hover .brand {
   color: var(--color-border-muted);
 }

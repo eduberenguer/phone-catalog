@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import { LogoMark } from "./LogoMark";
 
+import container from "../../styles/container.module.css";
 import styles from "./Navbar.module.css";
 
 export function Navbar() {
@@ -9,7 +10,7 @@ export function Navbar() {
   const hasItems = totalItems > 0;
 
   return (
-    <header className={styles.header}>
+    <header className={`${container.container} ${styles.header}`}>
       <Link to="/" className={styles.logo} aria-label="MBST, go to home">
         <LogoMark className={styles.logoMark} />
         <span>MBST</span>
@@ -35,10 +36,10 @@ export function Navbar() {
             />
           ) : (
             <path
-              d="M6 7.76471H18.2353V20H6V7.76471Z M9.76471 7.76471V4H14.4706V7.76471"
-              stroke="currentColor"
-              strokeWidth="1.2"
-              fill="none"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M14.4706 4.32031H9.76471V8.08502H6V20.3203H18.2353V8.08502H14.4706V4.32031ZM13.5294 9.0262V11.3791H14.4706V9.0262H17.2941V19.3791H6.94118V9.0262H9.76471V11.3791H10.7059V9.0262H13.5294ZM13.5294 8.08502V5.26149H10.7059V8.08502H13.5294Z"
+              fill="currentColor"
             />
           )}
         </svg>

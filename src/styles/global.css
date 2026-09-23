@@ -21,8 +21,12 @@ img {
 
 h1,
 h2,
-h3,
 p {
   margin: 0;
   font-weight: var(--font-weight-light);
+}
+
+button,
+input {
+  font: inherit;
 }

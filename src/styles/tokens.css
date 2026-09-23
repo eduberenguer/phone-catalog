@@ -1,5 +1,3 @@
-/* Values extracted from the Figma file's Design System components
-   (Header, Search, Smartphone card, Storage, Color, SDS Button). */
 :root {
   --color-bg: #ffffff;
   --color-text: #000000;
@@ -7,6 +5,7 @@
   --color-card-brand: #79736d;
   --color-border: #000000;
   --color-border-muted: #cccccc;
+  --color-surface: #f0f0f0;
   --color-danger: #df0000;
 
   --color-button-primary: #1b1a18;
@@ -15,6 +14,7 @@
   --color-button-disabled-border: #dbd9d7;
 
   --font-weight-light: 300;
+  --font-weight-regular: 400;
   --font-size-2xs: 10px;
   --font-size-xs: 12px;
   --font-size-sm: 14px;
@@ -29,4 +29,9 @@
   --space-4: 24px;
   --space-5: 32px;
   --space-6: 64px;
+
+  --space-section: 96px;
+  --space-section-heading: 40px;
+
+  --max-width-content: 1200px;
 }
