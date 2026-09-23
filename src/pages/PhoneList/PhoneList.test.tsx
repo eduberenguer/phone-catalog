@@ -20,7 +20,7 @@ describe("PhoneList", () => {
   it("renders the results count and a card per product", () => {
     vi.mocked(useProducts).mockReturnValue({
       products,
-      loading: false,
+      isLoading: false,
       error: null,
       retry: vi.fn(),
     });
@@ -35,7 +35,7 @@ describe("PhoneList", () => {
   it("shows a skeleton grid while loading with no products yet", () => {
     vi.mocked(useProducts).mockReturnValue({
       products: [],
-      loading: true,
+      isLoading: true,
       error: null,
       retry: vi.fn(),
     });
@@ -51,7 +51,7 @@ describe("PhoneList", () => {
     const retry = vi.fn();
     vi.mocked(useProducts).mockReturnValue({
       products: [],
-      loading: false,
+      isLoading: false,
       error: new Error("Network error"),
       retry,
     });
@@ -66,7 +66,7 @@ describe("PhoneList", () => {
   it("shows a purchase completed message when navigated with that state", () => {
     vi.mocked(useProducts).mockReturnValue({
       products,
-      loading: false,
+      isLoading: false,
       error: null,
       retry: vi.fn(),
     });

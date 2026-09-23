@@ -4,6 +4,7 @@ import { useProductDetail } from "../../hooks/useProductDetail";
 import { usePageTitle } from "../../hooks/usePageTitle";
 import { NotFound } from "../NotFound/NotFound";
 import { BackLink } from "../../components/BackLink/BackLink";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { SpecsTable } from "../../components/SpecsTable/SpecsTable";
 import { SimilarProducts } from "../../components/SimilarProducts/SimilarProducts";
 import { StorageSelector } from "../../components/StorageSelector/StorageSelector";
@@ -17,7 +18,9 @@ export function PhoneDetail() {
   const [selectedStorage, setSelectedStorage] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
-  const { product, isLoading, error, isNotFound } = useProductDetail(id ?? "");
+  const { product, isLoading, error, isNotFound, retry } = useProductDetail(
+    id ?? "",
+  );
   const { addItem } = useCart();
   const navigate = useNavigate();
 
@@ -42,7 +45,7 @@ export function PhoneDetail() {
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <ErrorMessage message={error.message} onRetry={retry} />;
   }
 
   if (!product) {

@@ -28,6 +28,7 @@ beforeEach(() => {
     isLoading: false,
     error: null,
     isNotFound: false,
+    retry: vi.fn(),
   });
 });
 

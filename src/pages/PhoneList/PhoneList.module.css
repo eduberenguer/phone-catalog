@@ -5,21 +5,6 @@
   font-size: var(--font-size-xs);
 }
 
-.error {
-  padding: var(--space-5) 0;
-  text-align: center;
-  color: var(--color-text-muted);
-}
-
-.retryButton {
-  margin-top: var(--space-3);
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--color-text);
-  background: transparent;
-  font-size: var(--font-size-xs);
-  cursor: pointer;
-}
-
 .results {
   transition: opacity 0.2s ease;
 }

@@ -6,8 +6,9 @@ import { ApiError } from "../api/client";
 export function useProductDetail(productId: string) {
   const [product, setProduct] = useState<ProductDetail | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   const [isNotFound, setIsNotFound] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -16,8 +17,8 @@ export function useProductDetail(productId: string) {
     setIsNotFound(false);
 
     getProductById(productId, abortController.signal)
-      .then((productDetail) => {
-        setProduct(productDetail);
+      .then((result) => {
+        setProduct(result);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -25,19 +26,19 @@ export function useProductDetail(productId: string) {
         if (err instanceof ApiError && err.status === 404) {
           setIsNotFound(true);
         } else {
-          setError(err.message);
+          setError(err);
         }
         setIsLoading(false);
       });
-    return () => {
-      abortController.abort();
-    };
-  }, [productId]);
+
+    return () => abortController.abort();
+  }, [productId, reloadKey]);
 
   return {
     product,
     isLoading,
     error,
     isNotFound,
+    retry: () => setReloadKey((prev) => prev + 1),
   };
 }
