@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { useProducts } from "../../hooks/useProducts";
+import { usePageTitle } from "../../hooks/usePageTitle";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { PhoneGrid } from "../../components/PhoneGrid/PhoneGrid";
 import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
@@ -9,6 +10,7 @@ import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
 import styles from "./PhoneList.module.css";
 
 export function PhoneList() {
+  usePageTitle("Smartphones");
   const location = useLocation();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);

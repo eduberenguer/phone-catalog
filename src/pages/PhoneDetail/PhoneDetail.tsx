@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProductDetail } from "../../hooks/useProductDetail";
+import { usePageTitle } from "../../hooks/usePageTitle";
 import { NotFound } from "../NotFound/NotFound";
 import { BackLink } from "../../components/BackLink/BackLink";
 import { SpecsTable } from "../../components/SpecsTable/SpecsTable";
@@ -19,6 +20,8 @@ export function PhoneDetail() {
   const { product, isLoading, error, isNotFound } = useProductDetail(id ?? "");
   const { addItem } = useCart();
   const navigate = useNavigate();
+
+  usePageTitle(product?.name ?? "Smartphone");
 
   const displayedImage =
     product?.colorOptions.find((color) => color.name === selectedColor)

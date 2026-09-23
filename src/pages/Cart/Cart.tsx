@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { CartItemRow } from "../../components/CartItemRow/CartItemRow";
 import { useCart } from "../../context/useCart";
+import { usePageTitle } from "../../hooks/usePageTitle";
 import { formatPrice } from "../../utils/format";
 
 import styles from "./Cart.module.css";
 
 export function Cart() {
+  usePageTitle("Cart");
   const { items, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
   const isEmpty = items.length === 0;
